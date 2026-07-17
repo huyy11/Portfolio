@@ -1,0 +1,99 @@
+.about{
+
+    margin-left:300px;
+
+    padding:80px;
+
+    background:white;
+
+}
+
+.title h2{
+
+    font-size:40px;
+
+    color:#173b6c;
+
+}
+
+.line{
+
+    width:70px;
+
+    height:4px;
+
+    background:#149ddd;
+
+    margin-top:10px;
+
+    margin-bottom:30px;
+
+}
+
+.intro{
+
+    font-size:18px;
+
+    color:#555;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+}
+
+.about-container{
+
+    display:flex;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+.left img{
+
+    width:350px;
+
+    border-radius:10px;
+
+}
+
+.right{
+
+    flex:1;
+
+}
+
+.right h3{
+
+    font-size:32px;
+
+    color:#173b6c;
+
+    margin-bottom:30px;
+
+}
+
+.info{
+
+    display:flex;
+
+    gap:60px;
+
+}
+
+.info p{
+
+    margin:20px 0;
+
+    font-size:18px;
+
+}
+
+.info strong{
+
+    color:#173b6c;
+
+}

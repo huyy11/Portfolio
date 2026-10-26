@@ -1,19 +1,32 @@
-import Sidebar from "./components/Sidebar";
+import { LanguageProvider } from "./context/LanguageContext";
+import CustomCursor from "./components/CustomCursor";
+import ScrollProgress from "./components/ScrollProgress";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
-import Resume from "./components/Resume";
+import Experience from "./components/Experience";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import HowIWork from "./components/HowIWork";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <Sidebar />
-      <Hero />
-      <About />
-      <Resume />
-      <Contact />
-    </>
+    <LanguageProvider>
+      <CustomCursor />
+      <ScrollProgress />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Skills />
+        <HowIWork />
+        <Contact />
+      </main>
+      <Footer />
+    </LanguageProvider>
   );
 }
-
-export default App;

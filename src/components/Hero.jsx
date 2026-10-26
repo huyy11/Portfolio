@@ -1,56 +1,92 @@
-import "../styles/Hero.css";
-import hero from "../assets/hero.jpg";
-import cv from "../assets/mycv.pdf";
-import { Typewriter } from "react-simple-typewriter";
+import { motion, useReducedMotion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
+import Magnetic from "./Magnetic";
+import "./Hero.css";
 
-function Hero() {
+export default function Hero() {
+  const { t } = useLanguage();
+  const reduce = useReducedMotion();
+
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+  };
+
+  const item = reduce
+    ? {}
+    : {
+        hidden: { opacity: 0, y: 26 },
+        show: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+        },
+      };
+
   return (
-    <section
-      id="home"
-      className="hero"
-      style={{
-        backgroundImage: `url(${hero})`,
-      }}
-    >
-      <div className="overlay">
+    <section id="home" className="hero">
+      <div className="hero__grid" aria-hidden="true" />
+      <div className="hero__orb hero__orb--blue" aria-hidden="true" />
+      <div className="hero__orb hero__orb--violet" aria-hidden="true" />
 
-        <h1>Kang Sivmey</h1>
+      <div className="container hero__content">
+        <motion.div variants={container} initial="hidden" animate="show">
+          <motion.p variants={item} className="hero__availability">
+            <span className="hero__pulse" aria-hidden="true" />
+            {t.hero.availability}
+          </motion.p>
 
-        <h2>
-          I'm{" "}
-          <span className="typing">
-            <Typewriter
-              words={[
-                "Computer Science Student",
-                "Web Developer",
-                "Video Editor",
-                "Frontend Developer",
-              ]}
-              loop={0}
-              cursor
-              cursorStyle="|"
-              typeSpeed={70}
-              deleteSpeed={50}
-              delaySpeed={1500}
-            />
-          </span>
-        </h2>
+          <motion.h1 variants={item} className="hero__name">
+            {t.hero.name}
+          </motion.h1>
 
-        <div className="buttons">
+          <motion.p variants={item} className="hero__role">
+            {t.hero.role}
+          </motion.p>
 
-         <a href={cv} download className="btn btn-primary">
-            Download CV
-        </a>
+          <motion.h2 variants={item} className="hero__headline">
+            {t.hero.headlineA}
+            <br />
+            <span className="hero__headline-gradient">
+              {t.hero.headlineB}
+            </span>
+          </motion.h2>
 
-        <a href="#contact" className="btn btn-secondary">
-            Contact Me
-        </a>
+          <motion.p variants={item} className="hero__intro">
+            {t.hero.intro}
+          </motion.p>
 
-        </div>
-
+          <motion.div variants={item} className="hero__actions">
+            <Magnetic>
+              <a href="#projects" className="btn btn--primary">
+                {t.hero.explore}
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a href="#contact" className="btn btn--outline">
+                {t.hero.contactMe}
+              </a>
+            </Magnetic>
+          </motion.div>
+        </motion.div>
       </div>
+
+      <a href="#about" className="hero__scroll-hint" aria-label="Scroll down">
+        <span />
+      </a>
     </section>
   );
 }
-
-export default Hero;

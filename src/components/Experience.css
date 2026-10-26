@@ -1,0 +1,130 @@
+.timeline {
+  list-style: none;
+  position: relative;
+  margin-top: 2.8rem;
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    var(--blue),
+    var(--violet) 55%,
+    rgba(139, 92, 246, 0)
+  );
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__dot {
+  position: absolute;
+  left: calc(-2rem + 2px);
+  top: 10px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--blue);
+  box-shadow: 0 0 12px rgba(76, 125, 255, 0.55);
+}
+
+.timeline__card-wrap {
+  max-width: 640px;
+}
+
+.timeline__card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 1.5rem 1.7rem;
+  transition: border-color 0.3s, transform 0.3s ease;
+}
+
+.timeline__card:hover {
+  border-color: rgba(76, 125, 255, 0.4);
+  transform: translateX(4px);
+}
+
+.timeline__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.timeline__period {
+  font-family: var(--font-head);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.22rem 0.8rem;
+}
+
+.timeline__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  color: var(--cyan);
+}
+
+.timeline__current-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  animation: timeline-pulse 2.2s infinite;
+}
+
+@keyframes timeline-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.timeline__role {
+  font-size: 1.25rem;
+  margin-bottom: 0.2rem;
+}
+
+.timeline__org {
+  color: var(--blue);
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.timeline__location {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.timeline__client {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeline__description {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
